@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using ShopGamer.Context;
 
@@ -8,6 +9,7 @@ builder.Services.AddDbContext<LojinhaContext>(options => options.UseSqlServer
 ("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRUD_MVC_SQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
