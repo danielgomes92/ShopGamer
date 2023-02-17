@@ -5,8 +5,8 @@ using ShopGamer.Context;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<LojinhaContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
+builder.Services.AddDbContext<LojinhaContext>(options => options.UseSqlServer
+("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRUD_MVC_SQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
 builder.Services.AddControllers();
 

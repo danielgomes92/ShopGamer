@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using ShopGamer.Context;
 using ShopGamer.Models;
 
 namespace ShopGamer.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class LojaGamerController : Controller
     {
         private readonly LojinhaContext _context;
@@ -24,10 +22,10 @@ namespace ShopGamer.Controllers
             return Ok(lojaGamer);
         }
 
-        [HttpGet("ConsultarPorNome/{name}")] // endpoint para a busca definina no parâmetro NAME.
+        [HttpGet("ConsultarPorNome/{name}")]
         public IActionResult DetalharItens(string name)
         {
-            var itemDaLoja = _context.LojaGamers.Where(x => x.Name.Contains(name)); // _context.LojaGamers.Find(Name); -- encontrar no banco por nome cadastrado e detalhar.
+            var itemDaLoja = _context.LojaGamers.Where(x => x.Name.Contains(name));
 
             if (name.ToUpper() == name.ToLower())
                 return Ok(name);
@@ -37,7 +35,7 @@ namespace ShopGamer.Controllers
 
             return Ok(itemDaLoja);
         }
-        [HttpGet("ConsultarPorID/{id}")] // busca por parâmetro ID
+        [HttpGet("ConsultarPorID/{id}")]
         public IActionResult ConsultarNome(int id)
         {
             var buscarItemNoBanco = _context.LojaGamers.Find(id);
@@ -47,7 +45,7 @@ namespace ShopGamer.Controllers
 
             return Ok(buscarItemNoBanco);
         }
-        [HttpGet("ConsultarTodosItens")] // Obter uma lista de todos os itens.
+        [HttpGet("ConsultarTodosItens")]
         public IActionResult ConsultarTodosItens(int id)
         {
             var buscarTodosItensNoBanco = _context.LojaGamers.ToList();
@@ -58,8 +56,7 @@ namespace ShopGamer.Controllers
             return Ok(buscarTodosItensNoBanco);
         }
 
-        // Buscar e Atualizar itens por id
-        [HttpPut("AtualizarPorID/alterarItemGamer/{id}")] // - ? - verificar com o time se esse parâmetro se enquadra corretamente na busca - ? -
+        [HttpPut("AtualizarPorID/alterarItemGamer/{id}")]
         public IActionResult AlterarInformacaoDosItens(LojaGamer alterarItemGamer)
         {
             if (alterarItemGamer == null)
@@ -76,7 +73,6 @@ namespace ShopGamer.Controllers
             return Ok(AlterarItemBancoLoja);
         }
 
-        //Buscar e excluir itens por id
         [HttpDelete("ExcluirPorID/{id}")]
         public IActionResult RemoverItens(int id)
         {
